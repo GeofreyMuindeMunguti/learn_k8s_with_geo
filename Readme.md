@@ -17,7 +17,7 @@
 
 ### Dockerize the web-api
  - Setup a `DockerFile` to create a docker image of the web-api
- - When building, name the image following this convention `docker_hub_username/repository:tag`, eg. `muinde:learn-with-geo:latest`
+ - When building, name the image following this convention `docker_hub_username/repository:tag`, eg. `muinde/learn-with-geo:latest`
  - We push the built docker image to docker hub: `docker push image_name`
 
 ### Setup kubernetes deployment manifests
