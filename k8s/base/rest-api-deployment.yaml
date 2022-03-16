@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: rest-api
+    labels:
+        app: rest-api
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: rest-api
+    template:
+        metadata:
+            labels:
+                app: rest-api
+        spec:
+            containers:
+                - name: rest-api
+                  image: muinde/learn-with-geo:latest
+                  ports:
+                    - containerPort: 8080
