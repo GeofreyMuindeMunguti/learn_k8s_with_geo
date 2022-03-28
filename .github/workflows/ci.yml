@@ -16,5 +16,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Test environment
-        run: echo Test environment works
+      - name: Build docker image
+        run: docker build -f web-api/Dockerfile -t learn-with-geo .
+
+      - name: login to docker hub
+        run: echo geofrey7543 | docker login -u muinde --password-stdin
+
+      - name: tag image
+        run: docker image tag learn-with-geo:latest muinde/learn-with-geo:latest
+
+      - name: push image
+        run: docker push muinde/learn-with-geo:latest
