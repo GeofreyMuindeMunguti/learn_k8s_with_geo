@@ -1,0 +1,15 @@
+name: Test
+
+on:
+
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run test
+        run: cd web-api && npm install && npm test
