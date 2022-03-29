@@ -11,15 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker build -f web-api/Dockerfile -t learn-with-geo .
+      - name: Check out the repo
+        uses: actions/checkout@v2
 
-      - name: login to docker hub
-        run: echo geofrey7543 | docker login -u muinde --password-stdin
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: tag image
-        run: docker image tag learn-with-geo:latest muinde/learn-with-geo:latest
-
-      - name: push image
-        run: docker push muinde/learn-with-geo:latest
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./web-api/Dockerfile
+          push: true
+          tags: muinde/learn-with-geo:latest
+          secrets: |
+            "PORT=${{ secrets.PORT}}"
+            "HOST=${{ secrets.HOST}}"

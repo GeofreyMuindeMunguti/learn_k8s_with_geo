@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.16.1"
   },
   "devDependencies": {

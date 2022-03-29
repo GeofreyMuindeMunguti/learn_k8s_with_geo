@@ -2,12 +2,13 @@
 
 
 const express = require('express');
+require('dotenv').config();
 const {getHellowMessage} = require("./controllers/greeting.controller")
 
 
 // Constants
-const PORT = 8080;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 8080;
+const HOST = process.env.HOST || '0.0.0.0';
 
 
 exports.greet = (req, res) => {

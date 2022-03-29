@@ -13,3 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run test
         run: cd web-api && npm install && npm test
+        env:
+          PORT: ${{secrets.PORT}}
+          HOST: ${{secrets.HOST}}
